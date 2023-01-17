@@ -6,18 +6,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to 'My portfolio', my_portfolio_path, class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Users
           </a>
           <ul class="dropdown-menu">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <% if current_user %>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <% else %>
+              <%= link_to 'Sign in', new_user_session_path, class: "dropdown-item" %>
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to 'Sign up', new_user_registration_path, class: "dropdown-item" %>
+            <% end %>
           </ul>
         </li>
       </ul>

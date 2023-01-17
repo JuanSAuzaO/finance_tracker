@@ -1,0 +1,26 @@
+<% if !@tracked_stocks.empty? %>
+  <div class="row mt-3">
+    <div class="col-9">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ticker</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tracked_stocks.each do |stock| %>
+            <tr>
+              <th scope="row"><%= stock.ticker %></th>
+              <td><%= stock.name %></th>
+              <td><%= stock.last_price %></th>
+              <td><%= 'Action placeholder' %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
