@@ -1,0 +1,24 @@
+<h2>User details</h2>
+
+<div class="card card-header results-block mt-3">
+  <table class="col-md-12">
+    <tbody>
+      <tr>
+        <td><strong>First name: </strong> <%= @user.first_name %></td>
+        <td><strong>Last name: </strong> <%= @user.last_name %></td>
+        <td><strong>Email: </strong> <%= @user.email %></td>
+        <td>
+          <% if current_user.not_friends_with?(@user.id) %>
+            <%= link_to 'Follow friend', friendships_path(friend: @user), class: "btn btn-success", method: :post %>
+          <% else %>
+            <span class="badge bg-secondary">
+              You are friends
+            </span>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'stocks/list' %>
